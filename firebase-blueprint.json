@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Learner profile storing CEFR proficiency, study stats, and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Learner full name" },
+        "email": { "type": "string", "description": "User email address" },
+        "photoURL": { "type": "string", "description": "Profile avatar URL" },
+        "phoneNumber": { "type": "string", "description": "User phone number" },
+        "level": { "type": "string", "description": "Current CEFR level (L0, A1, A2, B1, B2, C1, C2)" },
+        "learningGoal": { "type": "string", "description": "Primary goal e.g. Job Interviews, Workplace" },
+        "dailyGoalMinutes": { "type": "number", "description": "Daily study target in minutes" },
+        "streak": { "type": "number", "description": "Consecutive days study streak" },
+        "wordsPracticedCount": { "type": "number", "description": "Total words spoken in speaking lab" },
+        "completedLessons": { "type": "array", "description": "Array of completed lesson slugs" },
+        "todayMinutesSpent": { "type": "number", "description": "Minutes practiced today" },
+        "nativeLanguage": { "type": "string", "description": "Native language for explanations" },
+        "isOnboarded": { "type": "boolean", "description": "Whether onboarding has been completed" },
+        "createdAt": { "type": "string", "description": "Account creation ISO timestamp" },
+        "updatedAt": { "type": "string", "description": "Last update ISO timestamp" }
+      },
+      "required": ["uid"]
+    },
+    "CommunityPost": {
+      "title": "CommunityPost",
+      "description": "Public peer discussion and practice exchange post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Post ID" },
+        "clubId": { "type": "string", "description": "Study club identifier" },
+        "authorId": { "type": "string", "description": "User UID who posted" },
+        "authorName": { "type": "string", "description": "Author display name" },
+        "authorLevel": { "type": "string", "description": "Author CEFR level" },
+        "title": { "type": "string", "description": "Discussion title" },
+        "content": { "type": "string", "description": "Post content" },
+        "hindiTranslation": { "type": "string", "description": "Hindi context/translation" },
+        "category": { "type": "string", "description": "Category of question" },
+        "likesCount": { "type": "number", "description": "Helpful count" },
+        "repliesCount": { "type": "number", "description": "Number of replies" },
+        "createdAt": { "type": "string", "description": "ISO timestamp or relative string" }
+      },
+      "required": ["authorId", "title", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile collection isolated by user ID"
+    },
+    "/community_posts/{postId}": {
+      "schema": "CommunityPost",
+      "description": "Public community discussion posts"
+    }
+  }
+}

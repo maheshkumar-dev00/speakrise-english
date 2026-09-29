@@ -1,0 +1,6 @@
+{
+  "name": "SpeakRise English",
+  "description": "An international-quality English learning platform from absolute beginner to advanced level with structured lessons, Hindi explanations, speaking practice, AI guidance, and real-world communication.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
